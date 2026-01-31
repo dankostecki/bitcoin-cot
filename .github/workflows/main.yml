@@ -1,0 +1,22 @@
+name: COT Update
+on:
+  schedule:
+    # 22:00 UTC to 23:00 CET w każdy piątek
+    - cron: '0 22 * * 5' 
+  workflow_dispatch: # Przycisk do ręcznego odpalenia testu
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install pandas requests gspread google-auth
+      - name: Run script
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        run: python update_cot.py
