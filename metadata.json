@@ -1,0 +1,5 @@
+{
+  "name": "Wall Street Bitcoin Insight",
+  "description": "A professional analytical tool visualizing CFTC Commitment of Traders (COT) reports for Bitcoin, focusing on institutional positioning via Futures and ETFs.",
+  "requestFramePermissions": []
+}
